@@ -13,14 +13,11 @@ require '/Users/davidmieloch/dev/learn-live-love/config/environment'
   end
 
   def get_user_names # returns an array of lab titles
-    counter = 0
-    100.times do
-      hash = RestClient.get("https://api.github.com/search/repositories?q=#{@class_array[0]}&page=#{counter += 1}")
+    3.times do
+      hashketball = RestClient.get("https://api.github.com/repos/learn-co-students/advanced-hashes-hashketball-web-031317/pulls")
     # will give us a hash of repositories with 031317
-      repo_hash = JSON.parse(hash)
-      repo_hash["items"].each do |key, val|
-        p key["owner"]["id"]
-      end
+      hashketball_hash = JSON.parse(hashketball)
+      p hashketball_hash.map {|key, val| binding.pry key["user"] }
     end
   end
 get_user_names
