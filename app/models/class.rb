@@ -1,4 +1,4 @@
-require_relative '../config/environment'
+require '/Users/davidmieloch/dev/learn-live-love/config/environment'
 
 class Class < ActiveRecord::Base
 

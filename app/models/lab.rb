@@ -1,6 +1,6 @@
-require_relative '../config/environment'
+# require_relative '../config/environment'
 
-class Lab < ActiveRecord::Base
+# class Lab < ActiveRecord::Base
 
 
-end
+# end

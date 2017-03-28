@@ -1,5 +1,5 @@
-require_relative '../config/environment'
+# require_relative '../config/environment'
 
-class Solution < ActiveRecord::Base
+# class Solution < ActiveRecord::Base
 
-end
+# end

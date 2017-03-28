@@ -1,5 +1,5 @@
-require_relative '../config/environment'
+# require_relative '../config/environment'
 
-class Student < ActiveRecord::Base
+# class Student < ActiveRecord::Base
 
-end
+# end

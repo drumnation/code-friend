@@ -1,5 +1,5 @@
-require_relative '../config/environment'
+# require_relative '../config/environment'
 
-class Solutions < ActiveRecord::Migration
+# class Solutions < ActiveRecord::Migration
 
-end
+# end

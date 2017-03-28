@@ -1,5 +1,5 @@
-require_relative '../config/environment'
+# require_relative '../config/environment'
 
-class Students < ActiveRecord::Migration
+# class Students < ActiveRecord::Migration
 
-end
+# end
