@@ -1,4 +1,4 @@
-require '/Users/davidmieloch/dev/learn-live-love/config/environment'
+require '../config/environment'
 
 all_students_in_class = []
 
