@@ -8,4 +8,5 @@ class CreateLabsTable < ActiveRecord::Migration
         t.integer :solution_id
      end
    end
+   
 end
