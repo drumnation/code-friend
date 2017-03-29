@@ -6,7 +6,7 @@ require '/Users/davidmieloch/dev/learn-live-love/config/environment'
     counter = 0
     lab_names = []
     until counter == 10 do
-      hash = RestClient::Request.execute(method: :get, url:"https://api.github.com/search/repositories?q=031317&page=#{counter += 1}", user: 'eab499590f6381507f43db70b0d0bdd5ac4157a5')
+      hash = RestClient::Request.execute(method: :get, url:"https://api.github.com/search/repositories?q=031317&page=#{counter += 1}", user: '2b4bce8271dbc943f383947028934fc47592ced6')
       # will give us a hash of repositories with 031317
       repo_hash = JSON.parse(hash)
       lab_names += repo_hash["items"].map {|key, val| key["name"]}
@@ -25,7 +25,7 @@ require '/Users/davidmieloch/dev/learn-live-love/config/environment'
   # end
 
   def get_user_names # returns an array of lab titles
-      hashketball = RestClient::Request.execute(method: :get, url:"https://api.github.com/repos/learn-co-students/oo-kickstarter-web-031317/forks", user: 'eab499590f6381507f43db70b0d0bdd5ac4157a5')
+      hashketball = RestClient::Request.execute(method: :get, url:"https://api.github.com/repos/learn-co-students/oo-kickstarter-web-031317/forks", user: '2b4bce8271dbc943f383947028934fc47592ced6')
     # will give us a hash of repositories with 031317
       hashketball_hash = JSON.parse(hashketball)
       hashketball_hash.map {|key, val| key["owner"]["login"] }
@@ -34,7 +34,7 @@ require '/Users/davidmieloch/dev/learn-live-love/config/environment'
   def get_class # returns an array of lab titles
     # counter = 0
     # 10.times do
-      hash = RestClient::Request.execute(method: :get, url:"https://api.github.com/search/repositories?q=#{@class_array[0]}", user: 'eab499590f6381507f43db70b0d0bdd5ac4157a5')
+      hash = RestClient::Request.execute(method: :get, url:"https://api.github.com/search/repositories?q=#{@class_array[0]}", user: '2b4bce8271dbc943f383947028934fc47592ced6')
       # will give us a hash of repositories with 031317
       repo_hash = JSON.parse(hash)
       class_num = repo_hash["items"].map {|key, val| key["name"]}.first.split("-").last
@@ -42,7 +42,7 @@ require '/Users/davidmieloch/dev/learn-live-love/config/environment'
   end
 
   def get_user_profile(username)
-    user_name_hash = RestClient::Request.execute(method: :get, url:"https://api.github.com/users/#{username}", user: 'eab499590f6381507f43db70b0d0bdd5ac4157a5')
+    user_name_hash = RestClient::Request.execute(method: :get, url:"https://api.github.com/users/#{username}", user: '2b4bce8271dbc943f383947028934fc47592ced6')
     user_name = JSON.parse(user_name_hash)
 
     user_name.select {|key, val| return val if key == "name" }.values.flatten
@@ -62,7 +62,7 @@ require '/Users/davidmieloch/dev/learn-live-love/config/environment'
       Lab.create(lab_name_display: lab)
     end
   end
-
-# p get_user_names
+p get_user_names
+# p get_user_profile(get_user_names)
 # p get_class
 # get_lab_names

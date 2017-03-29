@@ -10,6 +10,7 @@ from = "+14846850791" # Your Twilio number
 friends = {
 "+18473222345" => "Peter",
 "+16107164984" => "Dave",
+"+18043871460" => "Scott",
 }
 friends.each do |key, value|
   client.account.messages.create(

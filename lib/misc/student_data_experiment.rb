@@ -1,13 +1,52 @@
-require '/Users/davidmieloch/dev/learn-live-love/lib/github_api_test.rb'
+require 'pry'
+# # not alphabetical
+#
+# slack = ['curtis__greene',
+# 'davemieloch',
+# 'de.usman',
+# 'dpark',
+# 'duncan.maina',
+# 'ethanryan',
+# 'jj_seymour',
+# 'liz',
+# 'markdegroat',
+# 'meryldakin',
+# 'naz',
+# 'peterchic',
+# 'peteryunkim',
+# 'runnan.tina',
+# 'sbruce',
+# 'scott.harrison',
+# 'anna.olsh',
+# 'charlie_stopek',
+# 'chris_hague',
+# 'dseehausen',
+# 'duncan',
+# 'jessica.lava',
+# 'robbie',
+# 'sammysteiner',
+# 'sylvee']
+#
+# may@flatironschool.com
+# cricky@flatironschool.com
 
-# this seeds lab db with lab_name_github and lab_name_display
 
-# get_lab_names.each do |lab|
-#   lab_name = lab.split("-").join(",").gsub(","," ").capitalize
-#   Lab.create(lab_name_github: lab, lab_name_display: lab_name)
-# end
 
-# this seeds db with github usernames
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 all_031317 = [
 { name: 'Sylvia Lee', cohort: '031317', github_username: 'hellosylvee', slack_username: 'sylvee',  email: 'sylvia.lee@flatironschool.com'},
@@ -32,6 +71,37 @@ all_031317 = [
 { name: 'Runnan Tina Zhong', cohort: '031317', github_username: 'Runnantina', slack_username: 'runnan.tina', email: 'runnan.zhong@flatironschool.com'},
 { name: 'Mark deGroat',  cohort: '031317', github_username: 'markdegroat', slack_username: 'markdegroat',  email: 'mark.degroat@flatironschool.com'}]
 
-all_031317.each do |hash|
-  Student.create(name: hash[:name], cohort: hash[:cohort], github_username: hash[:github_username], slack_username: hash[:slack_username], email: hash[:email])  
+all_031317.each do |array|
+  array.each do |key, val|
+    binding.pry
+    # if key == :name
+    #   puts val
+    # end
+    # if key == :cohort
+    #   cohort: "#{val}"
+    # end
+  end
 end
+
+
+# # sorted alphabetically
+# ["anna.olsh", "charlie_stopek", "chris_hague",
+# "curtis__greene", "davemieloch", "de.usman", "dpark",
+# "dseehausen", "duncan", "duncan.maina", "ethanryan",
+# "jessica.lava", "jj_seymour", "liz", "markdegroat",
+# "meryldakin", "naz", "peterchic", "peteryunkim", "robbie",
+# "runnan.tina", "sammysteiner", "sbruce", "scott.harrison",
+# "sylvee"]
+#
+#
+# ["hellosylvee", "elilyly", "duncandevs", "Runnantina",
+# "ethanryan", "peterchic", "DeUsman", "drumnation",
+# "orion1981", "dpark926", "annaolsh", "mega0319",
+# "meryldakin", "curtisgreene", "SammySteiner", "peteryunkim",
+# "szrharrison", "christopher-hague", "s-bruce", "ipc103",
+# "markdegroat", "rweber87"]
+#
+#
+#
+#
+# p slack.sort
