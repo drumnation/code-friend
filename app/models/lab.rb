@@ -1,4 +1,4 @@
-require '/Users/davidmieloch/dev/learn-live-love/config/environment'
+require '../config/environment'
 
 class Lab < ActiveRecord::Base
 end
