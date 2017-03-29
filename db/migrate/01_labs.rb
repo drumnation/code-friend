@@ -1,5 +1,11 @@
-# require_relative '../config/environment'
+require_relative '../config/environment'
 
-# class Labs < ActiveRecord::Migration
+class Labs < ActiveRecord::Migration
 
-# end
+  def change
+    CREATE_TABLE :labs do |t|
+        t.string :name
+       t.integer :student_id
+     end
+   end
+end

@@ -29,6 +29,7 @@ GEM
     mime-types-data (3.2016.0221)
     minitest (5.10.1)
     netrc (0.11.0)
+    oauth (0.5.1)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -80,6 +81,7 @@ DEPENDENCIES
   activerecord
   database_cleaner
   json
+  oauth
   pry
   rake
   require_all
