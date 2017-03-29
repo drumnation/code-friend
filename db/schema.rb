@@ -11,11 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329171630) do
+ActiveRecord::Schema.define(version: 5) do
+
+  create_table "labs", force: :cascade do |t|
+    t.string "lab_name_github"
+    t.string "lab_name_display"
+  end
 
   create_table "students", force: :cascade do |t|
     t.string  "name"
-    t.integer "class"
+    t.integer "cohort"
     t.string  "github_username"
     t.string  "slack_username"
     t.string  "cell"

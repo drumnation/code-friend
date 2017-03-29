@@ -113,7 +113,6 @@ DEPENDENCIES
   require_all
   require_relative
   rest-client
-  sinatra
   sinatra-activerecord
   sqlite3
   thin

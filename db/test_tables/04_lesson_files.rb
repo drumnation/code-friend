@@ -1,6 +1,6 @@
 require '../config/environment'
 
-class Files < ActiveRecord::Migration
+class LessonFiles < ActiveRecord::Migration
 
   def change
     CREATE_TABLE :files do |t|
