@@ -1,9 +1,9 @@
 # A sample Gemfile
 source "https://rubygems.org"
 
-# gem "rails"
+gem "rails"
 # gem 'require_all'
-gem 'sinatra-base'
+# gem 'sinatra'
 gem 'require_relative'
 # gem 'activerecord', :require => 'active_record'
 # gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
@@ -14,5 +14,5 @@ gem 'pry'
 # gem 'sqlite3'
 # gem 'database_cleaner'
 gem 'railties'
-gem 'twilio-ruby'
-gem 'yaml'
+# gem 'twilio-ruby'
+# gem 'yaml'
