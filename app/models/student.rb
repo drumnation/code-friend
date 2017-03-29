@@ -1,5 +1,4 @@
-# require_relative '../config/environment'
+require '/Users/davidmieloch/dev/learn-live-love/config/environment'
 
-# class Student < ActiveRecord::Base
-
-# end
+class Student < ActiveRecord::Base
+end

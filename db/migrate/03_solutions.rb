@@ -7,7 +7,9 @@ class Solutions < ActiveRecord::Migration
         t.string :solution
        t.integer :lab_id
        t.integer :student_id
+        t.string :solution_files_id
+        t.string :solution_directories_id
     end
   end
-  
+
 end
