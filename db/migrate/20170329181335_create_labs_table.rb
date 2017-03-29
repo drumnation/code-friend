@@ -1,3 +1,4 @@
+
 class CreateLabsTable < ActiveRecord::Migration
 
   def change
@@ -8,5 +9,5 @@ class CreateLabsTable < ActiveRecord::Migration
         t.integer :solution_id
      end
    end
-   
+
 end
