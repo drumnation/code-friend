@@ -45,7 +45,6 @@ require 'twilio-ruby'
      puts "We didn't find you in the database. Make sure you are putting your full first and last name"
    end
 
-
    def optional_cell # if we have cell skip this question
      puts "Enter your cell phone number for potential lab pairing."
      puts "Please press 1 if yes, press 2 if you already."
