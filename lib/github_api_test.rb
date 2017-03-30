@@ -1,4 +1,5 @@
 require '/Users/davidmieloch/dev/learn-live-love/config/environment'
+require '/Users/davidmieloch/dev/learn-live-love/secret.rb'
 @class_array = ['031317', '0217']
 
   # ex. ruby-class-variables-and-class-methods-lab-web-031317
@@ -6,7 +7,7 @@ require '/Users/davidmieloch/dev/learn-live-love/config/environment'
     counter = 0
     lab_names = []
     until counter == 10 do
-      hash = RestClient::Request.execute(method: :get, url:"https://api.github.com/search/repositories?q=031317&page=#{counter += 1}", user: '6a717046d7973135a3fc12fea342fb05e31d8d6a')
+      hash = RestClient::Request.execute(method: :get, url:"https://api.github.com/search/repositories?q=031317&page=#{counter += 1}", user: TOKEN)
       # will give us a hash of repositories with 031317
       repo_hash = JSON.parse(hash)
       lab_names += repo_hash["items"].map {|key, val| key["name"]}
@@ -18,7 +19,7 @@ require '/Users/davidmieloch/dev/learn-live-love/config/environment'
     counter = 0
     completed_pulls = []
     until counter == 10 do
-      hash = RestClient::Request.execute(method: :get, url:"https://api.github.com/search/repositories?q=031317&page=#{counter += 1}", user: '6a717046d7973135a3fc12fea342fb05e31d8d6a')
+      hash = RestClient::Request.execute(method: :get, url:"https://api.github.com/search/repositories?q=031317&page=#{counter += 1}", user: TOKEN)
       # will give us a hash of repositories with 031317
       repo_hash = JSON.parse(hash)
       repo_hash["items"].each do |key, val|
@@ -34,7 +35,7 @@ require '/Users/davidmieloch/dev/learn-live-love/config/environment'
     counter = 0
     completed_pulls = []
     until counter == 10 do
-      hash = RestClient::Request.execute(method: :get, url:"https://api.github.com/search/repositories?q=031317&page=#{counter += 1}", user: '6a717046d7973135a3fc12fea342fb05e31d8d6a')
+      hash = RestClient::Request.execute(method: :get, url:"https://api.github.com/search/repositories?q=031317&page=#{counter += 1}", user: TOKEN)
       # will give us a hash of repositories with 031317
       repo_hash = JSON.parse(hash)
       repo_hash["items"].map do |key, val|
@@ -79,7 +80,7 @@ require '/Users/davidmieloch/dev/learn-live-love/config/environment'
   # end
 
   def get_user_names # returns an array of lab titles
-      hashketball = RestClient::Request.execute(method: :get, url:"https://api.github.com/repos/learn-co-students/oo-kickstarter-web-031317/forks", user: '6a717046d7973135a3fc12fea342fb05e31d8d6a')
+      hashketball = RestClient::Request.execute(method: :get, url:"https://api.github.com/repos/learn-co-students/oo-kickstarter-web-031317/forks", user: TOKEN)
     # will give us a hash of repositories with 031317
       hashketball_hash = JSON.parse(hashketball)
       hashketball_hash.map {|key, val| key["owner"]["login"] }
@@ -88,7 +89,7 @@ require '/Users/davidmieloch/dev/learn-live-love/config/environment'
   def get_class # returns an array of lab titles
     # counter = 0
     # 10.times do
-      hash = RestClient::Request.execute(method: :get, url:"https://api.github.com/search/repositories?q=#{@class_array[0]}", user: '6a717046d7973135a3fc12fea342fb05e31d8d6a')
+      hash = RestClient::Request.execute(method: :get, url:"https://api.github.com/search/repositories?q=#{@class_array[0]}", user: TOKEN)
       # will give us a hash of repositories with 031317
       repo_hash = JSON.parse(hash)
       class_num = repo_hash["items"].map {|key, val| key["name"]}.first.split("-").last
@@ -96,7 +97,7 @@ require '/Users/davidmieloch/dev/learn-live-love/config/environment'
   end
 
   def get_user_profile(username)
-    user_name_hash = RestClient::Request.execute(method: :get, url:"https://api.github.com/users/#{username}", user: '6a717046d7973135a3fc12fea342fb05e31d8d6a')
+    user_name_hash = RestClient::Request.execute(method: :get, url:"https://api.github.com/users/#{username}", user: TOKEN)
     user_name = JSON.parse(user_name_hash)
 
     user_name.select {|key, val| return val if key == "name" }.values.flatten

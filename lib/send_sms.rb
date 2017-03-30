@@ -1,7 +1,5 @@
 require '/Users/davidmieloch/dev/learn-live-love/app/models/student.rb'
 require '/Users/davidmieloch/dev/learn-live-love/app/models/lab.rb'
-
-
 require 'rubygems'
 require 'twilio-ruby'
 
@@ -16,24 +14,18 @@ from = "+14846850791" # Your Twilio number
 # "+16107164984" => "Dave",
 # "+18043871460" => "Scott",
 # }
-
-lab
-
-friends.each do |key, value|
-  client.account.messages.create(
-    :from => from,
-    :to => key,
-    :body => "Hey #{value}, Monkey party at 6PM. Bring Bananas!"
-  )
-  puts "Sent message to #{value}"
+def send_text
+  final_sms_hash.each do |key, value|
+    client.account.messages.create(
+      :from => from,
+      :to => key,
+      :body => "Hey #{value}, Monkey party at 6PM. Bring Bananas!"
+    )
+    puts "Sent message to #{value}"
 end
 
-friends = {}
-friends = Student.get_phone_number_and_firstname_from_name(name)
-
-
-
-
-def self.get_name_from_username(username)
-  Student.find_by(github_username: username).name.split[0]
-end
+# friends = {}
+# friends = Student.get_phone_number_and_firstname_from_name(name)
+# def self.get_name_from_username(username)
+#   Student.find_by(github_username: username).name.split[0]
+# end
