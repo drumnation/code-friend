@@ -30,9 +30,67 @@ require 'pry'
 # may@flatironschool.com
 # cricky@flatironschool.com
 
+def students_menu
+  puts <<~HEREDOC
 
+  TYPE YOUR NUMBER TO LOGIN
 
+  1. Sylvia Lee
+  2. Meryl Dakin
+  3. Peter Chicarielli
+  4. Elizabeth Nicholson
+  5. Anna Olshevskaia
+  6. Robert Weber
+  7. Sarah Bruce
+  8. Duncan Maina
+  9. Sammy Steiner
+  10. Curtis Greene
+  11. Naz Khan
+  12. Ethan Ryan
+  13. Christopher Hague
+  14. Scott Harrison
+  15. Daniel Park
+  16. Charlie Stopek
+  17. Peter Kim
+  18. Usman Pervaiz
+  19. David Mieloch
+  20. Runnan Tina Zhong
+  21. Mark deGroat
 
+  HEREDOC
+end
+
+def organizer_self_selection
+  puts student_names
+  case gets.strip
+  when "1"
+  when "2"
+  when "3"
+  when "4"
+  when "5"
+  when "6"
+  when "7"
+  when "8"
+  when "9"
+  when "10"
+  when "11"
+  when "12"
+  when "13"
+  when "14"
+  when "15"
+  when "16"
+  when "17"
+  when "18"
+  when "19"
+  when "20"
+  else
+    puts "INVALID INPUT."
+    sleep(1)
+    puts `clear`
+    puts "Come on can't you type?"
+    puts (1)
+    puts student_names
+  end
 
 
 
