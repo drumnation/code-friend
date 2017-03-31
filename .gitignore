@@ -1,5 +1,6 @@
 *.gem
 *.rbc
+secret.rb
 .DS_Store
 /.config
 /coverage/

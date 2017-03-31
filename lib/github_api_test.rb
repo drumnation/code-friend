@@ -46,39 +46,6 @@ require '/Users/davidmieloch/dev/learn-live-love/secret.rb'
     end
   end
 
-
-
-# lab_hash[0].each do |key, val|
-#   if key == "user"
-#     val.each do |k, v|
-#       if k == "login"
-#         puts v
-#       end
-#     end
-#   end
-# end
-
-
-  # def get_names_from_pull_urls
-
-  # def get_all_lab_pull_urls(individual_pull_url)
-  #   all_urls = []
-  #   all_urls << individual_pull_url
-  #   all_urls
-  # end
-
-  # variable = get_all_lab_pull_urls
-  # puts variable
-  # def get_lab_names # returns an array of lab titles
-  #   counter = 0
-  #   100.times do
-  #     hash = RestClient.get("https://api.github.com/search/repositories?q=#{@class_array[0]}&page=#{counter += 1}")
-  #     # will give us a hash of repositories with 031317
-  #     repo_hash = JSON.parse(hash)
-  #     repo_hash["items"].map {|key, val| key["name"]}
-  #   end
-  # end
-
   def get_user_names # returns an array of lab titles
       hashketball = RestClient::Request.execute(method: :get, url:"https://api.github.com/repos/learn-co-students/oo-kickstarter-web-031317/forks", user: TOKEN)
     # will give us a hash of repositories with 031317
@@ -102,22 +69,9 @@ require '/Users/davidmieloch/dev/learn-live-love/secret.rb'
 
     user_name.select {|key, val| return val if key == "name" }.values.flatten
   end
-  # -----------------------------------------
-  # all_user_names = get_user_names.map do |user|
-  #   get_user_profile(user)
-  # end.compact
-  #
-  # all_user_names.each {|name| puts name }
-
-  # This stuff above prints out a list of full name strings
-  #-------------------------------------------------------
 
   def fill_lab_name_column
     get_lab_names.each do |lab|
       Lab.create(lab_name_display: lab)
     end
   end
-# p get_user_names
-# p get_user_profile(get_user_names)
-# p get_class
-# get_lab_names

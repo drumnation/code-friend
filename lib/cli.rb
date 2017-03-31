@@ -23,48 +23,32 @@ require 'twilio-ruby'
   end
 
   def main_menu
-    puts "Press 1 to Find a Lab Partner"
-      case gets.chomp
-      when "1"
+    puts "Press P to Find a Lab Partner"
+      case gets.chomp.upcase
+      when "P"
         puts `clear`
-        puts "Press 1 to see students who you can pair with."
-        puts "Press 9 to Quit Code-Friend."
-        case gets.chomp
-        when "1"
+        puts "Press E to see students who you can pair with."
+        puts "Press Q to Quit Code-Friend."
+        case gets.chomp.upcase
+        when "E"
           students_that_need_partners_message(which_lab?)
-          puts ""
-          puts "Press T to text students that you're looking to pair."
-          puts "Press Q to Quit"
-          case gets.chomp.upcase
-          when "T"
-            send_text(which_lab?)
-          when "Q"
-            return
-          else
-            puts `clear`
-            puts "Invalid Input."
-            sleep(1)
-            puts `clear`
-            puts "Press T to text students that you're looking to pair."
-            puts "Press Q to Quit"
-          end
         else
           puts "Invalid Input."
           sleep(1)
           puts `clear`
-          puts "Press 1 to see students who you can pair with."
-          puts "Press 2 to text students that you're looking to pair."
-          puts "Press 9 to Quit Code-Friend."
+          puts "Press E to see students who you can pair with."
+          puts "Press Q to Quit Code-Friend."
+          gets.chomp.upcase
         end
-      when "9"
+      when "Q"
         return
       else
-        puts "Please enter a number"
+        puts "Invalid Input"
         sleep(1)
-        puts "Press 1 to Find a Lab Partner"
-        gets.chomp
+        puts `clear`
+        puts "Press P to Find a Lab Partner. Don't mess it up..."
+        gets.chomp.upcase
       end
-    # puts "Press 2 to Generate a Huge List of Answers by Class"
   end
 
   def who_are_you # we know your student object
@@ -72,9 +56,21 @@ require 'twilio-ruby'
    puts "Please enter your full name so we can find you in our database."
    @name_input = gets.strip
    puts ""
+  #  puts "Thank you.  Please enter your phone number."
+  #  number = gets.chomp
+  #  get_cell_phone_number(find_person_in_db, number)
    puts "Code-Friend Welcomes you #{@name_input.split[0]}!"
    puts ""
   end
+
+  # def find_person_in_db(@name_input)
+  #   Student.find_by(name: name)
+  # end
+  #
+  #
+  # def get_cell_phone_number(find_person_in_db, number)
+  #   find_person_in_db.update_attribute :cell, "+1#{number}"
+  # end
 
    def invalid_input
      puts "We didn't find you in the database. Make sure you are putting your full first and last name"
@@ -90,12 +86,31 @@ require 'twilio-ruby'
   end
 
   def students_that_need_partners_message(lab)
+    if lab == nil
+      return
+    end
     puts ""
     puts "****** #{lab.get_lab_display_from_pull.upcase} ******"
     puts ""
     lab.who_needs_a_partner.each do |person|
         puts "#{person} needs a partner."
     end  # returns github username array of who needs partner
+    puts ""
+    puts "Press T to text students that you're looking to pair."
+    puts "Press Q to Quit"
+    case gets.chomp.upcase
+    when "T"
+      send_text(lab)
+    when "Q"
+      return
+    else
+      puts `clear`
+      puts "Invalid Input."
+      sleep(1)
+      puts `clear`
+      puts "Press T to text students that you're looking to pair."
+      puts "Press Q to Quit"
+    end
   end
 
   def which_lab? # returns lab instance/object
@@ -108,14 +123,25 @@ require 'twilio-ruby'
     puts "/"
     sleep(1)
     puts "\\"
-    Lab.find_by(pull_url: "https://api.github.com/repos/learn-co-students/#{lab_name}/pulls")
-    # need to match downcase to db
+    lab_object = Lab.find_by(pull_url: "https://api.github.com/repos/learn-co-students/#{lab_name}/pulls")
+    if lab_object
+      lab_object
+    else
+      puts ""
+      puts "~~~~~> Sorry. We couldn't find anything!!!"
+      puts ""
+      sleep(2)
+      puts "Check that the lab name you copied from the learn repo is correct."
+      puts ""
+      return
+    end
   end
 
-  # students_that_need_partners(which_lab?)
-
   def send_text(lab)
-
+    puts "~~~~~~> PLEASE WAIT. TEXTING YOUR HOMIES!"
+    puts "/"
+    sleep(1)
+    puts "\\"
     account_sid = T_SID
     auth_token = T_AT
     client = Twilio::REST::Client.new account_sid, auth_token
@@ -135,16 +161,11 @@ require 'twilio-ruby'
     end
   end
 
-  # send_text(which_lab?)
-
-# activerecord-tvland-web-031317
-
   def runner
     greeting
     sleep(1)
     who_are_you
     main_menu
   end
-# end
 
 runner

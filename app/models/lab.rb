@@ -1,22 +1,22 @@
 require '/Users/davidmieloch/dev/learn-live-love/config/environment'
+require '/Users/davidmieloch/dev/learn-live-love/secret.rb'
 class Lab < ActiveRecord::Base
 
   has_many :students
 
-  def get_lab_from_pull
-    # self.all.each do |url|
-      self.pull_url.split("https://api.github.com/repos/learn-co-curriculum/")[1].split("/pull")[0]
-    # end
-  end
-
-  def get_students_who_pulled
-    hash = RestClient::Request.execute(method: :get, url: self.pull_url, user: '6a717046d7973135a3fc12fea342fb05e31d8d6a')
-    lab_hash = JSON.parse(hash)
-    lab_hash.map {|hash| hash["user"]["login"] }
-  end
+  # name changing methods
 
   def get_lab_display_from_pull
-    get_lab_from_pull.gsub("_", "-").split("-").join(" ")
+    a = self.pull_url.split("https://api.github.com/repos/learn-co-students/")[1].split("/pull")[0]
+    a.gsub("_", "-").split("-").join(" ")
+  end
+
+  # lab info - regarding all the pull requests
+
+  def get_students_who_pulled
+    hash = RestClient::Request.execute(method: :get, url: self.pull_url, user: TOKEN)
+    lab_hash = JSON.parse(hash)
+    lab_hash.map {|hash| hash["user"]["login"] }
   end
 
   def combined_pull_all_list
@@ -30,40 +30,40 @@ class Lab < ActiveRecord::Base
     combined_pull_all_list - duplicates
   end
 
-  def get_real_name_from_github
-    self.who_needs_a_partner.map do |username|
+  # class finder methods
 
-    end
-  end
-
-  # def shithappens
-  #   get_students_who_pulled # github usernames of who pulled
-  #   who_needs_a_partner # returns github username array of who needs partner
-  #   get_real_name_from_github # convert github usernames to real names
-  # end
-#-------
   def find(name)
-    Students.find_by(github_username: name)
+    Student.find_by(github_username: name)
   end
 
   def username_to_object
-    Students.find_by(github_username: self)
+    Student.find_by(github_username: self)
   end
+
 
 
   def get_phone_number_and_firstname_from_name
     text_hash = {}
-    text_hash[Student.find_by(github_username: self.username).cell] = Student.find_by(github_username: self.username).name.split[0]
+    text_hash[Student.find_by(github_username: username).cell] = Student.find_by(github_username: self.username).name.split[0]
     text_hash
   end
 
   def final_sms_hash
-    who_needs_a_partner
-    sms_hash = {}
-    who_needs_a_partner.map do |username|
-      username.get_phone_number_and_firstname_from_name.merge(sms_hash)
+    names = who_needs_a_partner
+
+    names.each_with_object({}) do |name, result|
+      student = Student.find_by(github_username: name)
+      if student
+        cell_number = student.cell || student.id.to_s
+        result[cell_number] = student.name.split[0]
+      end
     end
-    sms_hash
+
+    # sms_hash = {}
+    # who_needs_a_partner.map do |username|
+    #   username.get_phone_number_and_firstname_from_name.merge(sms_hash)
+    # end
+    # sms_hash
   end
 
 end
