@@ -224,7 +224,7 @@ require 'twilio-ruby'
     puts `clear`
     location_options = <<~HEREDOC
 
-    "Where would you like the group to meet?"
+    > Where would you like the group to meet?
 
     1. At my desk
     2. By the lunch tables
@@ -269,7 +269,7 @@ require 'twilio-ruby'
 
     time_options = <<~HEREDOC
 
-    "When would you like the group to meet?"
+    > When would you like the group to meet?
 
     1. It's an emergency. Meet ASAP (5 min) - #{5.minutes.from_now.strftime("%I:%M")}
 
