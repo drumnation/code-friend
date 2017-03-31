@@ -2,11 +2,10 @@ class CreateEventsTable < ActiveRecord::Migration
 
   def change
      create_table :events do |t|
-         t.string :lab_id
-         t.string :organizer_id
-         t.string :invited_students_id
+        t.integer :lab_id
+        t.integer :organizer_id
          t.string :location
-       t.datetime :time
+         t.string :time
      end
    end
 
