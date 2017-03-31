@@ -1,5 +1,5 @@
 # CODE-FRIEND!
-The ultimate pairing tool for the meticulous Flatiron Student
+The Ultimate Pairing Tool for the Meticulous Flatiron Student
 
 ![](https://github.com/drumnation/learn-live-love/blob/master/code-friend-demo.gif)
 
