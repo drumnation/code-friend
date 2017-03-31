@@ -33,7 +33,7 @@ require 'twilio-ruby'
         when "E"
           students_that_need_partners_message(which_lab?)
         when "Q"
-          return
+          exit
         else
           puts "Invalid Input."
           sleep(1)
@@ -43,7 +43,7 @@ require 'twilio-ruby'
           gets.chomp.upcase
         end
       when "Q"
-        return
+        exit
       else
         puts "Invalid Input"
         sleep(1)
@@ -92,6 +92,8 @@ require 'twilio-ruby'
     20. Runnan Tina Zhong
     21. Mark deGroat
 
+    PRESS 'Q' TO QUIT
+
     HEREDOC
   end
 
@@ -139,6 +141,8 @@ require 'twilio-ruby'
       @name_input = 'Runnan Tina Zhong'
     when "21"
       @name_input = 'Mark deGroat'
+    when "Q"
+      exit
     else
       puts "INVALID INPUT."
       sleep(1)
@@ -152,7 +156,7 @@ require 'twilio-ruby'
 # def invalid_input
 #  puts "We didn't find you in the database. Make sure you are putting your full first and last name"
 # end
-# 
+#
 # def optional_cell # if we have cell skip this question
 #  puts "Enter your cell phone number for potential lab pairing."
 #  puts "Please press 1 if yes, press 2 if you already."
@@ -164,7 +168,7 @@ require 'twilio-ruby'
 
   def students_that_need_partners_message(lab)
     if lab == nil
-      return
+      exit
     end
     puts ""
     puts "****** #{lab.get_lab_display_from_pull.upcase} ******"
@@ -181,7 +185,7 @@ require 'twilio-ruby'
       time_menu
       send_text(lab)
     when "Q"
-      return
+      exit
     else
       puts `clear`
       puts "Invalid Input."
@@ -246,7 +250,7 @@ require 'twilio-ruby'
     when "5"
       @location = gets.strip.downcase.captialize
     when "Q"
-      return
+      exit
     else
       puts "INVALID INPUT!"
       sleep(1)
@@ -291,7 +295,7 @@ require 'twilio-ruby'
     when "4"
       @event_time = 60.minutes.from_now.strftime("%I:%M")
     when "Q"
-      return
+      exit
     else
       puts "INVALID INPUT!"
       sleep(1)
