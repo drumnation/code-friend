@@ -202,7 +202,7 @@ require 'twilio-ruby'
     puts "ex. activerecord-tvland-web-031317"
     lab_name = gets.strip.downcase
     puts ""
-    puts "~~~~> Thank you.  Searching the Matrix...."
+    puts "~~~~~~> Thank you.  Searching the Matrix...."
     puts "/"
     sleep(1)
     puts "\\"
@@ -240,13 +240,13 @@ require 'twilio-ruby'
 
     case gets.strip.upcase
     when "1"
-      @location = 'At my desk'
+      @location = "At my desk"
     when "2"
-      @location = 'By the lunch tables'
+      @location = "By the lunch tables"
     when "3"
-      @location = 'Turing'
+      @location = "Turing"
     when "4"
-      @location = 'Kay'
+      @location = "Kay"
     when "5"
       @location = gets.strip.downcase.captialize
     when "Q"
@@ -262,6 +262,8 @@ require 'twilio-ruby'
       gets.strip.upcase
     end
   end
+
+
 
   def time_menu # asks for the time
     @location = ''
@@ -321,11 +323,11 @@ require 'twilio-ruby'
 
     lab.final_sms_hash.each do |key, value|
       # binding.pry
-      if key.length == 12 && @name_
+      if key.length == 12
         client.account.messages.create(
           :from => from,
           :to => key,
-          :body => "Hey #{value} it's #{@name_input[0]}, I'm organizing a group to work at #{@event_time}:#{@location} on #{lab.get_lab_display_from_pull}!"
+          :body => "Hey #{value} it's #{@name_input[0]}, I'm organizing a group to work at #{@event_time} - #{@location} on #{lab.get_lab_display_from_pull}!"
         )
         puts "Sent message to #{value}"
       end
