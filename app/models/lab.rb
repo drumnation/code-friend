@@ -40,14 +40,6 @@ class Lab < ActiveRecord::Base
     Student.find_by(github_username: self)
   end
 
-
-
-  def get_phone_number_and_firstname_from_name
-    text_hash = {}
-    text_hash[Student.find_by(github_username: username).cell] = Student.find_by(github_username: self.username).name.split[0]
-    text_hash
-  end
-
   def final_sms_hash
     names = who_needs_a_partner
 
@@ -58,12 +50,6 @@ class Lab < ActiveRecord::Base
         result[cell_number] = student.name.split[0]
       end
     end
-
-    # sms_hash = {}
-    # who_needs_a_partner.map do |username|
-    #   username.get_phone_number_and_firstname_from_name.merge(sms_hash)
-    # end
-    # sms_hash
   end
 
 end

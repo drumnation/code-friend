@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 8) do
+ActiveRecord::Schema.define(version: 10) do
+
+  create_table "events", force: :cascade do |t|
+    t.integer "lab_id"
+    t.integer "organizer_id"
+    t.string  "location"
+    t.string  "time"
+  end
+
+  create_table "invited_students", force: :cascade do |t|
+    t.integer "organizer_id"
+    t.integer "student_id"
+  end
 
   create_table "labs", force: :cascade do |t|
     t.string "pull_url"
