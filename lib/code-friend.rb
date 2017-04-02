@@ -1,5 +1,5 @@
 require_relative '../config/environment'
-require '/Users/davidmieloch/dev/learn-live-love/secret.rb'
+require_relative '../secret.rb'
 require 'rubygems'
 require 'twilio-ruby'
 

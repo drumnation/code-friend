@@ -1,4 +1,4 @@
-require '../learn-live-love/config/environment'
+require_relative '../config/environment'
 
 all_students_in_class = []
 

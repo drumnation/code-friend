@@ -1,5 +1,5 @@
-require '/Users/davidmieloch/dev/learn-live-love/config/environment'
-require '/Users/davidmieloch/dev/learn-live-love/secret.rb'
+require_relative '../config/environment'
+require_relative '../secret.rb'
 @class_array = ['031317', '0217']
 
   # ex. ruby-class-variables-and-class-methods-lab-web-031317
