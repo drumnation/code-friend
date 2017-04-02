@@ -1,7 +1,7 @@
 # A sample Gemfile
 source "https://rubygems.org"
 
-
+gem 'rails'
 gem 'require_relative'
 gem 'sinatra-activerecord' # :require => 'sinatra'
 gem 'rest-client'
