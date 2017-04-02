@@ -327,7 +327,7 @@ require 'twilio-ruby'
         client.account.messages.create(
           :from => from,
           :to => key,
-          :body => "Hey #{value} it's #{@name_input[0]}, I'm organizing a group to work at #{@event_time} - #{@location} on #{lab.get_lab_display_from_pull}!"
+          :body => "Hey #{value} it's #{@name_input}, I'm organizing a group to work at #{@event_time} on #{lab.get_lab_display_from_pull}!"
         )
         puts "Sent message to #{value}"
       end
