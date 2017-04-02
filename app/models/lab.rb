@@ -1,5 +1,6 @@
-require '/Users/davidmieloch/dev/learn-live-love/config/environment'
-require '/Users/davidmieloch/dev/learn-live-love/secret.rb'
+require_relative '../../config/environment.rb'
+require_relative '../../secret.rb'
+
 class Lab < ActiveRecord::Base
 
   has_many :students

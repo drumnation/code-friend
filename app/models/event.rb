@@ -1,4 +1,5 @@
-require '/Users/davidmieloch/dev/learn-live-love/config/environment'
+require_relative '../../config/environment'
+
 class Event < ActiveRecord::Base
   has_many :students
 
